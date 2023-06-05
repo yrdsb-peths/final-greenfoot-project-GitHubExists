@@ -21,4 +21,10 @@ public class MyWorld extends World
         Car car = new Car();
         addObject(car, 300, 800);
     }
+    
+    public void Shoot(int x, int y)
+    {
+        Shot shot = new Shot();
+        addObject(shot, x, y);
+    }
 }

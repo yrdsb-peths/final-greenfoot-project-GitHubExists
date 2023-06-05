@@ -29,7 +29,7 @@ public class Car extends Actor
         int x = getX() + (int)(xVel+0.5);
         int y = getY() + (int)(yVel+0.5);
         setLocation(x, y);
-        
+        setRotation((int)(xVel+0.5)*2);
         // Changes velocity with which key is pressed
         if (Greenfoot.isKeyDown("left"))
         {
@@ -65,6 +65,10 @@ public class Car extends Actor
         } else
         {
             yVel *= 0.95;
+        }
+        if (Greenfoot.isKeyDown("space"))
+        {
+            MyWorld.shoot(getX(), getY());
         }
     }
 }
