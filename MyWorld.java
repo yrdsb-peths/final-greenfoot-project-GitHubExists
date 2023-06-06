@@ -20,6 +20,12 @@ public class MyWorld extends World
         // Create car
         Car car = new Car();
         addObject(car, 300, 800);
+        
+        Boss boss = new Boss();
+        addObject(boss, 300, 0);
+        
+        Turret bossTurret = new Turret();
+        addObject(bossTurret, 200, 0);
     }
     
     public void shoot(int x, int y)
