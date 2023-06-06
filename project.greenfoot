@@ -1,16 +1,22 @@
 #Greenfoot project file
 class.Car.image=car03-n.png
-class.MyWorld.image=granite-light.jpg
-class.Shot.image=plum.png
+class.MyWorld.image=rivets.jpg
+class.Shot.image=Bullet.png
 dependency1.from=MyWorld
 dependency1.to=Car
 dependency1.type=UsesDependency
-editor.fx.0.height=739
+dependency2.from=MyWorld
+dependency2.to=Shot
+dependency2.type=UsesDependency
+dependency3.from=Car
+dependency3.to=MyWorld
+dependency3.type=UsesDependency
+editor.fx.0.height=737
 editor.fx.0.width=816
 editor.fx.0.x=235
-editor.fx.0.y=58
+editor.fx.0.y=60
 height=1047
-package.numDependencies=1
+package.numDependencies=3
 package.numTargets=3
 project.charset=windows-1252
 publish.hasSource=false

@@ -22,9 +22,9 @@ public class MyWorld extends World
         addObject(car, 300, 800);
     }
     
-    public void Shoot(int x, int y)
+    public void shoot(int x, int y)
     {
         Shot shot = new Shot();
-        addObject(shot, x, y);
+        addObject(shot, x, y-6);
     }
 }

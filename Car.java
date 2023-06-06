@@ -10,7 +10,7 @@ public class Car extends Actor
 {
     double xVel = 0;
     double yVel = 0;
-    
+    int shotInterval = 0;
     boolean start = true;
     /**
      * Act - do whatever the Car wants to do. This method is called whenever
@@ -23,11 +23,13 @@ public class Car extends Actor
             if (getY() < 600) {
                 start = false;
             }
+            shotInterval = 2;
             setLocation(300, getY()-8);
         }
         //Car moves depending on velocity
         int x = getX() + (int)(xVel+0.5);
         int y = getY() + (int)(yVel+0.5);
+        shotInterval -= 1;
         setLocation(x, y);
         setRotation((int)(xVel+0.5)*2);
         // Changes velocity with which key is pressed
@@ -68,7 +70,12 @@ public class Car extends Actor
         }
         if (Greenfoot.isKeyDown("space"))
         {
-            MyWorld.shoot(getX(), getY());
+            if (shotInterval < 1) {
+                MyWorld world = (MyWorld) getWorld();
+                world.shoot(getX(), getY());
+                shotInterval = 10;
+            }
+            
         }
     }
 }
