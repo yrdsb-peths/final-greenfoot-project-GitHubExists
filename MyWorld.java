@@ -33,4 +33,16 @@ public class MyWorld extends World
         Shot shot = new Shot();
         addObject(shot, x, y-6);
     }
+    
+    public void telegraph(int x, int y)
+    {
+        Crosshair crosshair = new Crosshair();
+        addObject(crosshair, x, y);
+    }
+    
+    public void makeExplosion(int x, int y)
+    {
+        Explosion explosion = new Explosion();
+        addObject(explosion, x, y);
+    }
 }

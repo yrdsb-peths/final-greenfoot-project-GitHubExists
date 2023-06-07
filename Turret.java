@@ -14,7 +14,26 @@ public class Turret extends Actor
      */
     public void act()
     {
-        
-        // Add your action code here.
+        int x = Boss.bossX;
+        int y = Boss.bossY;
+        int r = Boss.turretDirect;
+        setRotation(r);
+        if (r == 90)
+        {
+            y -= 80;
+        }
+        else if (r == 270)
+        {
+            y += 80;
+        }
+        else if (r == 0)
+        {
+            x += 80;
+        }
+        else
+        {
+            x -= 80;
+        }
+        setLocation(x,y);
     }
 }
