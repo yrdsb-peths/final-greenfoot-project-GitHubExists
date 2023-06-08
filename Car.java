@@ -8,10 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Car extends Actor
 {
+    static int carX;
+    static int carY;
+    
     double xVel = 0;
     double yVel = 0;
     int shotInterval = 0;
     boolean start = true;
+    
+    static int invinciFrames = 0;
     /**
      * Act - do whatever the Car wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,11 +31,17 @@ public class Car extends Actor
             shotInterval = 2;
             setLocation(300, getY()-8);
         }
+        
+        if (invinciFrames > 0)
+        {
+            invinciFrames -= 1;
+        }
+        
         //Car moves depending on velocity
-        int x = getX() + (int)(xVel+0.5);
-        int y = getY() + (int)(yVel+0.5);
+        carX = getX() + (int)(xVel+0.5);
+        carY = getY() + (int)(yVel+0.5);
         shotInterval -= 1;
-        setLocation(x, y);
+        setLocation(carX, carY);
         setRotation((int)(xVel+0.5)*2);
         // Changes velocity with which key is pressed
         if (Greenfoot.isKeyDown("left"))
@@ -77,5 +88,6 @@ public class Car extends Actor
             }
             
         }
+        
     }
 }

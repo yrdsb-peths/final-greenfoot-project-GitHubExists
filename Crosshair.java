@@ -30,7 +30,7 @@ public class Crosshair extends Actor
         if (rotation == 0)
         {
             MyWorld world = (MyWorld) getWorld();
-            world.makeExplosion(getX(), getY());
+            world.makeExplosion(getX(), getY(), 150, true);
             getWorld().removeObject(this);
         }
     }

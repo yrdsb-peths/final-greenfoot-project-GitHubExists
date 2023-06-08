@@ -40,9 +40,15 @@ public class MyWorld extends World
         addObject(crosshair, x, y);
     }
     
-    public void makeExplosion(int x, int y)
+    public void makeExplosion(int x, int y, int s, boolean d)
     {
-        Explosion explosion = new Explosion();
+        Explosion explosion = new Explosion(s,d);
         addObject(explosion, x, y);
+    }
+    
+    public void makeLaneSplosion(int x, int y)
+    {
+        LaneSplosion laneSplosion = new LaneSplosion();
+        addObject(laneSplosion, x, y);
     }
 }

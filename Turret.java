@@ -20,19 +20,23 @@ public class Turret extends Actor
         setRotation(r);
         if (r == 90)
         {
-            y -= 80;
+            y -= 90 + Boss.recoil;
         }
         else if (r == 270)
         {
-            y += 80;
+            y += 90 - Boss.recoil;
         }
         else if (r == 0)
         {
-            x += 80;
+            x += 90 - Boss.recoil;
         }
         else
         {
-            x -= 80;
+            x -= 90 + Boss.recoil;
+        }
+        if (Boss.recoil > 0)
+        {
+            Boss.recoil -= 1;
         }
         setLocation(x,y);
     }
