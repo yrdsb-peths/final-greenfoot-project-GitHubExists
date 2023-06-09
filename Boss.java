@@ -28,6 +28,39 @@ public class Boss extends Actor
      */
     public void act()
     {
+        bossAttack();
+        
+        setLocation(getX()+bossXv, getY()+bossYv);
+        bossX = getX();
+        bossY = getY();
+        
+        if (bossCollisionDamage && isTouching(Car.class))
+        {
+            Car.takeDamage();
+        }
+     }
+    
+    private void bossAttackSetup()
+    {
+        if (bossAttackCount == 0)
+        {
+            bossAttack = Greenfoot.getRandomNumber(1+bossPhase)+1;
+            if (bossAttack == 1)
+            {
+                bossAttackCount = Greenfoot.getRandomNumber(5)+3;
+                interval = 30;
+            }
+            if (bossAttack == 2)
+            {
+                bossAttackCount = Greenfoot.getRandomNumber(4)+1;
+                bossTargetX = Greenfoot.getRandomNumber(500)+50;
+                interval = 80;
+            }
+        }
+    }
+    
+    private void bossAttack()
+    {
         if (bossAttack == 0) {
             setRotation(270);
             turretDirect = 270;
@@ -44,12 +77,10 @@ public class Boss extends Actor
                 percisionShot();
                 interval = 30;
                 bossAttackCount -= 1;
-                recoil = 10;
                 bossAttackSetup();
             }
             
             interval -= 1;
-            //bossAttack = Greenfoot.getRandomNumber(2)+1;
         }
         if (bossAttack == 2) {
             if (Math.abs(getX()-bossTargetX) < 20)
@@ -76,29 +107,6 @@ public class Boss extends Actor
                     }
                 }
                 interval -= 1;
-            }
-        }
-        setLocation(getX()+bossXv, getY()+bossYv);
-        bossX = getX();
-        bossY = getY();
-        // Add your action code here.
-    }
-    
-    private void bossAttackSetup()
-    {
-        if (bossAttackCount == 0)
-        {
-            bossAttack = Greenfoot.getRandomNumber(1+bossPhase)+1;
-            if (bossAttack == 1)
-            {
-                bossAttackCount = Greenfoot.getRandomNumber(5)+3;
-                interval = 30;
-            }
-            if (bossAttack == 2)
-            {
-                bossAttackCount = Greenfoot.getRandomNumber(4)+1;
-                bossTargetX = Greenfoot.getRandomNumber(500)+50;
-                interval = 80;
             }
         }
     }

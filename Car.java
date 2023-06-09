@@ -10,6 +10,7 @@ public class Car extends Actor
 {
     static int carX;
     static int carY;
+    static int carHp;
     
     double xVel = 0;
     double yVel = 0;
@@ -25,16 +26,12 @@ public class Car extends Actor
     {
         if (start)
         {
+            carHp = 5;
             if (getY() < 600) {
                 start = false;
             }
             shotInterval = 2;
             setLocation(300, getY()-8);
-        }
-        
-        if (invinciFrames > 0)
-        {
-            invinciFrames -= 1;
         }
         
         //Car moves depending on velocity
@@ -43,6 +40,14 @@ public class Car extends Actor
         shotInterval -= 1;
         setLocation(carX, carY);
         setRotation((int)(xVel+0.5)*2);
+        
+        control();
+        
+        hpCheck();
+    }
+    
+    private void control()
+    {
         // Changes velocity with which key is pressed
         if (Greenfoot.isKeyDown("left"))
         {
@@ -88,6 +93,29 @@ public class Car extends Actor
             }
             
         }
+    }
+    
+    public static void takeDamage()
+    {
+        if (Car.invinciFrames == 0)
+        {
+            invinciFrames = 75;
+            carHp -= 1;
+        }
         
+    }
+    private void hpCheck()
+    {
+        if (invinciFrames > 0)
+        {
+            invinciFrames -= 1;
+        } 
+
+        if (carHp == 0)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.makeExplosion(getX(), getY(), 150, false);
+            getWorld().removeObject(this);
+        }
     }
 }

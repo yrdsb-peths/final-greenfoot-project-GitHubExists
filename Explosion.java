@@ -31,19 +31,11 @@ public class Explosion extends Actor
         setImage(explosion[timer/2]);
         if (isTouching(Car.class) && damaging)
         {
-            takeDamage();
+            Car.takeDamage();
         }
         if (timer == 2*11)
         {
             getWorld().removeObject(this);
-        }
-    }
-    
-    public void takeDamage()
-    {
-        if (Car.invinciFrames == 0)
-        {
-            Car.invinciFrames = 25;
         }
     }
 }
