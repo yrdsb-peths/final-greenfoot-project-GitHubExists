@@ -26,6 +26,10 @@ public class Shot extends Actor
         setLocation(getX(), getY()-15);
         
         if (getY() == 0 || isTouching(Boss.class)) {
+            if (isTouching(Boss.class))
+            {
+                Boss.bossHP -= 1;
+            }
             getWorld().removeObject(this);
         }
     }

@@ -29,6 +29,13 @@ public class MyWorld extends World
         
         Turret bossTurret = new Turret();
         addObject(bossTurret, 200, 0);
+        
+        
+        for (int i = 0; i < 5; i++)
+        {
+            Health health = new Health(i);
+            addObject(health, 35, 750-i*50);
+        }
     }
     
     public void shoot(int x, int y)

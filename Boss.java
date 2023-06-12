@@ -13,6 +13,7 @@ public class Boss extends Actor
     static int turretDirect;
     static int bossPhase = 1;
     static int recoil = 0;
+    static int bossHP = 300;
     static boolean bossCollisionDamage = true;
 
     int bossAttack = 0;
@@ -28,7 +29,10 @@ public class Boss extends Actor
      */
     public void act()
     {
-        bossAttack();
+        if (Car.carHp > 0)
+        {
+            bossAttack();
+        }
         
         setLocation(getX()+bossXv, getY()+bossYv);
         bossX = getX();
@@ -44,17 +48,22 @@ public class Boss extends Actor
     {
         if (bossAttackCount == 0)
         {
-            bossAttack = Greenfoot.getRandomNumber(1+bossPhase)+1;
+            bossAttack = Greenfoot.getRandomNumber(2+bossPhase)+1;
             if (bossAttack == 1)
             {
                 bossAttackCount = Greenfoot.getRandomNumber(5)+3;
-                interval = 30;
+                interval = 60;
             }
             if (bossAttack == 2)
             {
                 bossAttackCount = Greenfoot.getRandomNumber(4)+1;
                 bossTargetX = Greenfoot.getRandomNumber(500)+50;
-                interval = 80;
+                interval = 160;
+            }
+            if (bossAttack == 3)
+            {
+                bossAttackCount = Greenfoot.getRandomNumber(8)+3;
+                interval = 60;
             }
         }
     }
@@ -107,6 +116,34 @@ public class Boss extends Actor
                     }
                 }
                 interval -= 1;
+            }
+        }
+        if (bossAttack == 3)
+        {
+            if (interval == 0)
+            {
+                scatterShot();
+                interval = 20;
+                bossAttackCount -= 1;
+                bossAttackSetup();
+            }
+            
+            interval -= 1;
+        }
+        if (bossAttack == 4)
+        {
+            if (bossAttackCount == 3)
+            {
+                bossYv += 1;
+                if (bossYv == 9)
+                {
+                    bossYv = 8;
+                }
+                if (getX() < 750)
+                {
+                    getImage().setTransparency(0);
+                    interval = 400;
+                }
             }
         }
     }

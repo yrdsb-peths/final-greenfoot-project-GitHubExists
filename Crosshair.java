@@ -25,7 +25,7 @@ public class Crosshair extends Actor
     {
         crosshair.scale(size,size);
         setRotation(getRotation()+(int)rotation);
-        rotation -= 0.5;
+        rotation -= 0.25;
         size = size-(size-140)/4;
         if (rotation == 0)
         {
