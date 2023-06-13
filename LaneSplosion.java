@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LaneSplosion here.
+ * One of the Boss's attacks, a chain explosion down the lane
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stanley
+ * @version June 2023
  */
 public class LaneSplosion extends Actor
 {

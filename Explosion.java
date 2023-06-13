@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Explosion here.
+ * Explosion, part of the Boss's attacks, can be damaging and non damaging
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stanley
+ * @version June 2023
  */
 public class Explosion extends Actor
 {

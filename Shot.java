@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import greenfoot.GreenfootImage;
 
 /**
- * Write a description of class Shot here.
+ * The player shot that damages the boss
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stanley
+ * @version June 2023
  */
 public class Shot extends Actor
 {

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Boss here.
+ * The opponet the player has to defeat
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stanley
+ * @version June 2023
  */
 public class Boss extends Actor
 {
@@ -29,6 +29,8 @@ public class Boss extends Actor
      */
     public void act()
     {
+        bossPhase = (400-bossHP)/100;
+        
         if (Car.carHp > 0)
         {
             bossAttack();
@@ -52,18 +54,18 @@ public class Boss extends Actor
             if (bossAttack == 1)
             {
                 bossAttackCount = Greenfoot.getRandomNumber(5)+3;
-                interval = 60;
+                interval = 150-bossPhase*30;
             }
             if (bossAttack == 2)
             {
                 bossAttackCount = Greenfoot.getRandomNumber(4)+1;
                 bossTargetX = Greenfoot.getRandomNumber(500)+50;
-                interval = 160;
+                interval = 200-bossPhase*30;
             }
             if (bossAttack == 3)
             {
                 bossAttackCount = Greenfoot.getRandomNumber(8)+3;
-                interval = 60;
+                interval = 150-bossPhase*30;;
             }
         }
     }
@@ -84,7 +86,7 @@ public class Boss extends Actor
             if (interval == 0)
             {
                 percisionShot();
-                interval = 30;
+                interval = 35-bossPhase*5;;
                 bossAttackCount -= 1;
                 bossAttackSetup();
             }
@@ -100,7 +102,7 @@ public class Boss extends Actor
                 bossAttackSetup();
                 bossXv = 0;
                 bossTargetX = Greenfoot.getRandomNumber(500)+50;
-                interval = 80;
+                interval = 95-bossPhase*15;;
             }
             else
             {
@@ -123,7 +125,7 @@ public class Boss extends Actor
             if (interval == 0)
             {
                 scatterShot();
-                interval = 20;
+                interval = 30-bossPhase*8;;
                 bossAttackCount -= 1;
                 bossAttackSetup();
             }

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Turret here.
+ * Boss turret, indipendent asset from boss for animation purposes
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stanley
+ * @version June 2023
  */
 public class Turret extends Actor
 {
