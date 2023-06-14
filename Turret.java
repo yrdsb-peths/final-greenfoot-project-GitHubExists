@@ -16,28 +16,17 @@ public class Turret extends Actor
     {
         int x = Boss.bossX;
         int y = Boss.bossY;
-        int r = Boss.turretDirect;
-        setRotation(r);
-        if (r == 90)
-        {
-            y -= 90 + Boss.recoil;
-        }
-        else if (r == 270)
-        {
-            y += 90 - Boss.recoil;
-        }
-        else if (r == 0)
-        {
-            x += 90 - Boss.recoil;
-        }
-        else
-        {
-            x -= 90 + Boss.recoil;
-        }
+        setRotation(270);
+        y += 90 - Boss.recoil;
         if (Boss.recoil > 0)
         {
             Boss.recoil -= 1;
         }
         setLocation(x,y);
+        
+        if (Boss.bossY > 400)
+        {
+            getWorld().removeObject(this);
+        }
     }
 }

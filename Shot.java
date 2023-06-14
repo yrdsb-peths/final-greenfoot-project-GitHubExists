@@ -28,7 +28,7 @@ public class Shot extends Actor
         if (getY() == 0 || isTouching(Boss.class)) {
             if (isTouching(Boss.class))
             {
-                Boss.bossHP -= 1;
+                Boss.bossHP -= 10;
             }
             getWorld().removeObject(this);
         }

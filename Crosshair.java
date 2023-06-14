@@ -27,11 +27,14 @@ public class Crosshair extends Actor
         setRotation(getRotation()+(int)rotation);
         rotation -= 0.25;
         size = size-(size-140)/4;
-        if (rotation == 0)
+        if (rotation == 0 || Boss.bossHP < 1)
         {
-            Boss.recoil = 10;
-            MyWorld world = (MyWorld) getWorld();
-            world.makeExplosion(getX(), getY(), 150, true);
+            if (Boss.bossHP > 1)
+            {
+                Boss.recoil = 10;
+                MyWorld world = (MyWorld) getWorld();
+                world.makeExplosion(getX(), getY(), 150, true);
+            }
             getWorld().removeObject(this);
         }
     }

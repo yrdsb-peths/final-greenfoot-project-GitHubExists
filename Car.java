@@ -16,6 +16,7 @@ public class Car extends Actor
     double yVel = 0;
     int shotInterval = 0;
     boolean start = true;
+    int scoreTimer = 0;
     
     static int invinciFrames = 0;
     /**
@@ -32,6 +33,16 @@ public class Car extends Actor
             }
             shotInterval = 2;
             setLocation(300, getY()-8);
+        }
+        else
+        {
+            if (scoreTimer == 0 && Boss.bossHP > 0)
+            {
+                MyWorld world = (MyWorld) getWorld();
+                world.updateScore();
+                scoreTimer = 5;
+            }
+            scoreTimer -= 1;
         }
         
         //Car moves depending on velocity
