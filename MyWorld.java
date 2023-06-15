@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    public int score = 10000;
+    public int score;
     Label scoreLabel;
     /**
      * Constructor for objects of class MyWorld.
@@ -39,6 +39,7 @@ public class MyWorld extends World
             addObject(health, 35, 750-i*50);
         }
         
+        score = 10000;
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel,100,50);
         scoreLabel.setValue(score);
@@ -82,6 +83,18 @@ public class MyWorld extends World
             score --;
         }
         scoreLabel.setValue(score);
+    }
+    
+    public void decreaseScore()
+    {
+        if (score > 1000)
+        {
+            score -= 1000;
+        }
+        else
+        {
+            score = 0;
+        }
     }
     
     public void gameOver()

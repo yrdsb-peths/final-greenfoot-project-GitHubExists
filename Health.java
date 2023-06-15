@@ -23,6 +23,8 @@ public class Health extends Actor
     {
         if (corrisbondingHp >= Car.carHp || Boss.bossHP < 1)
         {
+            MyWorld world = (MyWorld) getWorld();
+            world.decreaseScore();
             getWorld().removeObject(this);
         }
     }
