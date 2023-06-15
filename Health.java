@@ -21,7 +21,7 @@ public class Health extends Actor
     
     public void act()
     {
-        if (corrisbondingHp >= Car.carHp)
+        if (corrisbondingHp >= Car.carHp || Boss.bossHP < 1)
         {
             getWorld().removeObject(this);
         }

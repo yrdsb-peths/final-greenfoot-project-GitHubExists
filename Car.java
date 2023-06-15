@@ -32,7 +32,7 @@ public class Car extends Actor
                 start = false;
             }
             shotInterval = 2;
-            setLocation(300, getY()-8);
+            setLocation(275, getY()-8);
         }
         else
         {
@@ -126,6 +126,8 @@ public class Car extends Actor
         {
             MyWorld world = (MyWorld) getWorld();
             world.makeExplosion(getX(), getY(), 150, false);
+            world.gameOver();
+            
             getWorld().removeObject(this);
         }
     }

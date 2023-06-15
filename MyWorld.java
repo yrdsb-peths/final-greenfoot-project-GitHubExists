@@ -17,21 +17,21 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 800 cells with a cell size of 1x1 pixels.
-        super(600, 800, 1);
+        super(565, 800, 1);
         
         Greenfoot.setSpeed(50);
         
         // Create car
         Car car = new Car();
-        addObject(car, 300, 800);
+        addObject(car, 275, 800);
         
         Boss.bossHP = 300;
         Boss.bossCollisionDamage = true;
         Boss boss = new Boss();
-        addObject(boss, 300, 0);
+        addObject(boss, 275, 0);
         
         Turret bossTurret = new Turret();
-        addObject(bossTurret, 200, 0);
+        addObject(bossTurret, 275, 0);
         
         for (int i = 0; i < 5; i++)
         {
@@ -82,5 +82,21 @@ public class MyWorld extends World
             score --;
         }
         scoreLabel.setValue(score);
+    }
+    
+    public void gameOver()
+    {
+        Label gameOverLabel = new Label("Game Over!", 70);
+        addObject(gameOverLabel, 275, 400);
+        scoreLabel.setValue("");
+    }
+    
+    public void victory()
+    {
+        Label victoryLabel = new Label("You Win!", 70);
+        addObject(victoryLabel, 275, 350);
+        Label finalScore = new Label("Final Score: " + score, 70);
+        addObject(finalScore, 275, 425);
+        scoreLabel.setValue("");
     }
 }

@@ -59,6 +59,7 @@ public class Boss extends Actor
             {
                 MyWorld world = (MyWorld) getWorld();
                 world.makeExplosion(getX(), getY(), 400, false);
+                world.victory();
                 getWorld().removeObject(this);
             }
         }
