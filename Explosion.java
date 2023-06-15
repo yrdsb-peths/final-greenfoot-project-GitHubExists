@@ -11,6 +11,7 @@ public class Explosion extends Actor
     int timer = 0;
     boolean damaging;
     GreenfootImage[] explosion = new GreenfootImage[12];
+    GreenfootSound explosionSound = new GreenfootSound("Explosion.mp3");
     /**
      * Act - do whatever the Explosion wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,6 +19,7 @@ public class Explosion extends Actor
     public Explosion(int s, boolean d)
     {
         damaging = d;
+        explosionSound.play();
         for (int i = 0; i < explosion.length; i++)
         {
             explosion[i] = new GreenfootImage("images/Explosion/"+i+".png");
