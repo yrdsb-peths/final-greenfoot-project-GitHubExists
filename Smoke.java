@@ -11,8 +11,7 @@ public class Smoke extends Actor
     GreenfootImage smoke = new GreenfootImage("images/Smoke.png");
     int movementCounter = 9;
     /**
-     * Act - do whatever the Smoke wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Smoke moves out from the Boss as an indicator to the Player that it is at low HP
      */
     public Smoke()
     {

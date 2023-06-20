@@ -10,8 +10,7 @@ public class Crosshair extends Actor
 {
     GreenfootImage crosshair = new GreenfootImage("images/Crosshair.png");
     /**
-     * Act - do whatever the Crosshair wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Telegraph spins, when it stops spinning it creates a damaging explosion on where the Crosshair is
      */
     int size = 145;
     double rotation = 20;
@@ -21,6 +20,7 @@ public class Crosshair extends Actor
         crosshair.scale(size,size);
         setRotation(Greenfoot.getRandomNumber(360));
     }
+    
     public void act()
     {
         crosshair.scale(size,size);

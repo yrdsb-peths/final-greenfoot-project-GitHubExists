@@ -13,8 +13,7 @@ public class Explosion extends Actor
     GreenfootImage[] explosion = new GreenfootImage[12];
     GreenfootSound explosionSound = new GreenfootSound("Explosion.mp3");
     /**
-     * Act - do whatever the Explosion wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Cycle through explosion animation, if it is damaging and it comes in contact with Player then Player takes damage
      */
     public Explosion(int s, boolean d)
     {

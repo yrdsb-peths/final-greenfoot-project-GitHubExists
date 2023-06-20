@@ -11,8 +11,7 @@ public class Health extends Actor
     int corrisbondingHp;
     
     /**
-     * Act - do whatever the Health wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Displays player HP, removes one of itself when Player takes damage
      */
     public Health(int hp)
     {

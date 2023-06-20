@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Car extends Actor
 {
+    // Car HP and Car location accessable with other Actors
     static int carX;
     static int carY;
     static int carHp;
@@ -25,6 +26,7 @@ public class Car extends Actor
      */
     public void act()
     {
+        // The car moves from the bottom on screen at the start of the game
         if (start)
         {
             carHp = 5;
@@ -36,6 +38,7 @@ public class Car extends Actor
         }
         else
         {
+            // Decrease score when the Car and Boss HPs are bigger than 0
             if (scoreTimer == 0 && Boss.bossHP > 0)
             {
                 MyWorld world = (MyWorld) getWorld();
@@ -57,6 +60,7 @@ public class Car extends Actor
         hpCheck();
     }
     
+    // Car movement
     private void control()
     {
         // Changes velocity with which key is pressed
@@ -95,6 +99,8 @@ public class Car extends Actor
         {
             yVel *= 0.95;
         }
+        
+        // Fire bullet when Space is pressed
         if (Greenfoot.isKeyDown("space"))
         {
             if (shotInterval < 1) {
@@ -106,6 +112,8 @@ public class Car extends Actor
         }
     }
     
+    
+    // Take damage when coming into contact with Boss attacks, has invincibility frames
     public static void takeDamage()
     {
         if (Car.invinciFrames == 0)
@@ -115,6 +123,9 @@ public class Car extends Actor
         }
         
     }
+    
+    // Check for if HP is less than one, if so, trigger game over. If not, decrease invincibility frames.
+    
     private void hpCheck()
     {
         if (invinciFrames > 0)

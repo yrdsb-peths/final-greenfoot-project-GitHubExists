@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Boss extends Actor
 {
+    //Static boss variables to use with other actors
     static int bossX;
     static int bossY;
     static int bossPhase;
@@ -24,27 +25,29 @@ public class Boss extends Actor
     int smokeInterval = 5;
     
     /**
-     * Act - do whatever the Boss wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Boss action for their attacks and movement
      */
     public void act()
     {
+        // Boss switches phases as it gets to lower HP
         bossPhase = (400-bossHP)/100;
-        
+        // Only attack when player and boss hp is higher than 0
         if (Car.carHp > 0 && bossHP > 0)
         {
             bossAttack();
         }
+        // Move positions according to Xv and Yv
         setLocation(getX()+bossXv, getY()+bossYv);
         bossX = getX();
         bossY = getY();
-        
+        // Check if Player takes collision damage
         if (bossCollisionDamage && isTouching(Car.class))
         {
             Car.takeDamage();
         }
         
         smoke();
+        // Boss defeat sequence
         if (bossHP < 1)
         {
             bossCollisionDamage = false;
@@ -63,8 +66,9 @@ public class Boss extends Actor
                 getWorld().removeObject(this);
             }
         }
-     }
+    }
     
+    //Setting up Boss's attack, time taken decreases with phase
     private void bossAttackSetup()
     {
         if (bossAttackCount == 0)
@@ -89,8 +93,10 @@ public class Boss extends Actor
         }
     }
     
+    // Boss attack execution, Boss becomes faster with lower HP
     private void bossAttack()
     {
+        // Boss moves from the top on screen at the start of the game, then begins to cycle through attacks
         if (bossAttack == 0) {
             setRotation(270);
             setLocation(getX(), getY()+3);
@@ -99,6 +105,7 @@ public class Boss extends Actor
                 bossAttackSetup();
             }
         } 
+        // Percision shot attack, boss fires onto player's location
         if (bossAttack == 1) 
         {
             if (interval == 0)
@@ -111,6 +118,7 @@ public class Boss extends Actor
             
             interval -= 1;
         }
+        // Move around and create LaneSplosions
         if (bossAttack == 2) {
             if (Math.abs(getX()-bossTargetX) < 20)
             {
@@ -138,6 +146,7 @@ public class Boss extends Actor
                 interval -= 1;
             }
         }
+        // Scatter shot attack, similar to percision shot
         if (bossAttack == 3)
         {
             if (interval == 0)
@@ -150,42 +159,30 @@ public class Boss extends Actor
             
             interval -= 1;
         }
-        if (bossAttack == 4)
-        {
-            if (bossAttackCount == 3)
-            {
-                bossYv += 1;
-                if (bossYv == 9)
-                {
-                    bossYv = 8;
-                }
-                if (getX() < 750)
-                {
-                    getImage().setTransparency(0);
-                    interval = 400;
-                }
-            }
-        }
     }
     
+    // Fire shot directly onto player
     private void percisionShot()
     {
         MyWorld world = (MyWorld) getWorld();
         world.telegraph(Car.carX, Car.carY);
     }
     
+    // Fire shot to a random location
     private void scatterShot()
     {
         MyWorld world = (MyWorld) getWorld();
         world.telegraph(Greenfoot.getRandomNumber(500)+50, Greenfoot.getRandomNumber(450)+300);
     }
     
+    // Fire a lane of explosions
     private void laneSplosion()
     {
         MyWorld world = (MyWorld) getWorld();
         world.makeLaneSplosion(getX(), getY()+95);
     }
     
+    // Smoke indicates how low the Boss HP is at, higher frequency smoke means less HP
     private void smoke()
     {
         if (smokeInterval == 0)

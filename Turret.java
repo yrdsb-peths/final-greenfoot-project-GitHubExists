@@ -9,8 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Turret extends Actor
 {
     /**
-     * Act - do whatever the Turret wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Move location to Boss base at all times, gets a small ammount of recoil whenever Boss fires a shot
      */
     public void act()
     {

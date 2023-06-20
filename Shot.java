@@ -12,8 +12,7 @@ public class Shot extends Actor
     GreenfootImage bullet = new GreenfootImage("images/Bullet.png");
 
     /**
-     * Act - do whatever the Shot wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Move forward, when it touches the top or Boss, remove itself. Damages the boss if it hits the Boss
      */
     public Shot()
     {
